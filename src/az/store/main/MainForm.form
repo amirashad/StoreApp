@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.2" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+      <SubComponents>
+        <Menu class="javax.swing.JMenu" name="jTopMenuNews">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Yenil&#x259;r"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNewProduct">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Yeni M&#x259;hsul"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuNewProductActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNewPostavsik">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Yeni M&#x259;hsul g&#x259;tir&#x259;n"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNewClient">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Yeni Sat&#x131;&#x15f; m&#x259;nt&#x259;q&#x259;si"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuClients">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="M&#xfc;&#x15f;t&#x259;ril&#x259;r / Sat&#x131;&#x15f; m&#x259;nt&#x259;q&#x259;l&#x259;ri"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuClientsActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNewProductType">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Yeni M&#x259;hsul tipi"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNewProductMeasure">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Yeni &#xd6;l&#xe7;&#xfc; vahidi"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNewExpenditure">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Yeni X&#x259;rc tipi"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNewWorker">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Yeni &#x130;&#x15f;&#xe7;i"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNewCurrency">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Yeni Valyuta n&#xf6;v&#xfc;"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jTopMenuProducts">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="M&#x259;hsullar"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuExpenditureAsProduct">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="X&#x259;rcl&#x259;r (M&#x259;hsul &#x15f;&#x259;klind&#x259;)"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuExpenditureAsProductActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuPriceIncrease">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qiym&#x259;tl&#x259;rin artmas&#x131;"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuPriceDecrease">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qiym&#x259;tl&#x259;rin azalmas&#x131;"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNakladnoy">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qaim&#x259;l&#x259;r"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuNakladnoyActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNakladnoyForm2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Qaim&#x259;l&#x259;r (Forma 2)"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuNakladnoyForm2ActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jTopMenuInvoices">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Qaim&#x259;l&#x259;r"/>
+          </Properties>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jTopMenuPayments">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#xd6;d&#x259;ni&#x15f;l&#x259;r"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuPaymentPostavsik">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="M&#x259;hsul g&#x259;tir&#x259;nl&#x259;r&#x259; &#xf6;d&#x259;ni&#x15f;l&#x259;r"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuPaymentPostavsikActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuPaymentClient">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="M&#xfc;&#x15f;t&#x259;ril&#x259;rin &#xf6;d&#x259;ni&#x15f;l&#x259;ri"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuPaymentClientActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuExpenditureAsMoney">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="X&#x259;rcl&#x259;r (Pul &#x15f;&#x259;klind&#x259;)"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuExpenditureAsMoneyActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jTopMenuProduction">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#x130;stehsalat"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNewTemplate">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x15e;ablonlar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuNewTemplateActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuNewProduction">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Yeni m&#x259;hsulun istehsal olunmas&#x131;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuNewProductionActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jTopMenuReports">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Hesabat"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuProductReport">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="D&#xf6;vriyy&#x259; hesabat&#x131;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuProductReportActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuPaymentReport">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#xd6;d&#x259;ni&#x15f;l&#x259;rin hesabat&#x131;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuPaymentReportActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuPostavsikAndClientReport">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="M&#x259;hsul g&#x259;tir&#x259;n v&#x259; Sat&#x131;&#x15f; m&#x259;nt&#x259;q&#x259;l&#x259;rinin hesabat&#x131;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuPostavsikAndClientReportActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jTopMenuExit">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="&#xc7;&#x131;x&#x131;&#x15f;"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuBackup">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Arxivini g&#xf6;t&#xfc;r"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuBackupActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jmenuExit">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#xc7;&#x131;x&#x131;&#x15f;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmenuExitActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+      </SubComponents>
+    </Menu>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="ANBAR"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+  </Events>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,3,0,0,3,66"/>
+  </AuxValues>
+
+  <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+  <SubComponents>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Center"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+    </Container>
+  </SubComponents>
+</Form>
