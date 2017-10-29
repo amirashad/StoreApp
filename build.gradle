@@ -1,0 +1,52 @@
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
+
+group 'az.rashad.store'
+version '2.1-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'net.sourceforge.jexcelapi:jxl:2.6.12'
+//    compile 'com.toedter:jcalendar:1.4'
+    compile 'com.jtattoo:JTattoo:1.6.11'
+    compile 'org.postgresql:postgresql:42.1.4'
+    compile files('libs/SingleInstanceApplication.jar')
+    compile files('libs/JAzCalendar-1.0-SNAPSHOT.jar')
+//    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    def buildTimeAndDate = OffsetDateTime.now()
+    def buildDate = DateTimeFormatter.ISO_LOCAL_DATE.format(buildTimeAndDate)
+
+    manifest {
+        attributes  (
+                'Created-By': "${System.properties['java.version']} (${System.properties['java.vendor']} ${System.properties['java.vm.version']})".toString(),
+                'Build-Date': buildDate,
+                'Specification-Title': project.name,
+                'Specification-Version': project.version,
+                'Specification-Vendor': 'Rashad Amirjanov',
+                'Implementation-Title': project.name,
+                'Implementation-Version': project.version,
+                'Implementation-Vendor': 'Rashad Amirjanov',
+                'Main-Class': 'az.store.main.MainForm'
+        )
+    }
+
+    //create a single jar with all dependencies
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+//    with jar
+}
+
+//task copyToLib(type: Copy) {
+//    into "$buildDir/output/lib"
+//    from configurations.runtime
+//}
