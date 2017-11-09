@@ -20,6 +20,7 @@ dependencies {
     compile 'org.postgresql:postgresql:42.1.4'
     compile files('libs/SingleInstanceApplication.jar')
     compile files('libs/JAzCalendar-1.0-SNAPSHOT.jar')
+
 //    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
@@ -41,12 +42,18 @@ jar {
         )
     }
 
+
     //create a single jar with all dependencies
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
-//    with jar
+    //with jar
+
+    //dependencies outside of jar
+//    String libs = ''
+//    configurations.compile.each { libs += 'lib/' + it.getName() + ' ' }
+//    manifest.attributes('Class-Path': libs)
+//    copy {
+//        from configurations.compile
+//        into "$buildDir/libs/lib"
+//    }
 }
 
-//task copyToLib(type: Copy) {
-//    into "$buildDir/output/lib"
-//    from configurations.runtime
-//}

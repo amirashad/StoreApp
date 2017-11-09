@@ -4,6 +4,7 @@ package az.util.components;
  * @author Rashad Amirjanov
  */
 
+import az.util.utils.Utils;
 import jxl.Workbook;
 import jxl.WorkbookSettings;
 import jxl.format.UnderlineStyle;
@@ -246,8 +247,20 @@ public class ExcelWriter {
 //    }
     public static void viewFile(String fileName) {
         try {
-            String[] commands = {"cmd", "/c", "start", "\"DummyTitle\"", fileName};
-            Process p = Runtime.getRuntime().exec(commands);
+            String[] command;
+            Utils.OSType osType = Utils.getOSType();
+            if (osType == Utils.OSType.WINDOWS) {
+                command = new String[]{"cmd", "/c", "start", "\"DummyTitle\"", fileName};
+            } else if (osType == Utils.OSType.LINUX) {
+                command = new String[]{"xdg-open", fileName};
+            } else if (osType == Utils.OSType.MAC) {
+                command = new String[]{"open", fileName};
+            } else {
+                Logger.getLogger(ExcelWriter.class.getName()).log(Level.SEVERE,
+                        "Can't identify OSType " + osType.toString() + " to open file " + fileName);
+                return;
+            }
+            Process p = Runtime.getRuntime().exec(command);
             p.waitFor();
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(ExcelWriter.class.getName()).log(Level.SEVERE, null, ex);

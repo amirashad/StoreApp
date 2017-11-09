@@ -31,6 +31,7 @@ public class InvoiceDialog extends javax.swing.JDialog {
     private static InvoiceDialog invoiceDialog = null;
     private Invoice currentInvoice = null;
     private InvoiceDetailed currentInvoiceDetailed = null;
+
     private ObjectTableModelEx tmTemporaryInvoices = new ObjectTableModelEx(
             new String[]{"ID", "Məhsul", "Sayı", "Qiyməti", "Satış qiy.",
                     "Ümumi qiyməti", "Ümumi Satış qiy.", "Ümumi Gəlir"}) {
@@ -74,6 +75,7 @@ public class InvoiceDialog extends javax.swing.JDialog {
             return result;
         }
     };
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -155,6 +157,7 @@ public class InvoiceDialog extends javax.swing.JDialog {
                     if (invoiceType == null) {
                         return;
                     }
+
                     jlbClient.setText(invoiceType.getClientLabelName());
                     jlbTotalBuyPrice.setText(jlbPriceBuy.getText());
                     jtxtPriceBuy.setEditable(invoiceType.getSign() > 0);
@@ -291,6 +294,8 @@ public class InvoiceDialog extends javax.swing.JDialog {
             setInvoiceEditable(false);
         }
 
+        jbtnEditSelected.setVisible(false);
+
         List<InvoiceType> invoiceTypes = Collections.singletonList((InvoiceType) jcbInvoiceTypes.getSelectedItem());
         ArrayList<Invoice> invoices = Inits.getSelectQueries().getInvoices(invoiceId, null, temp, null, null, invoiceTypes);
         if (invoices.size() > 0) {
@@ -330,7 +335,7 @@ public class InvoiceDialog extends javax.swing.JDialog {
         setInvoiceDetailedEditing(false);
     }
 
-    void setInvoiceEditable(boolean editable) {
+    private void setInvoiceEditable(boolean editable) {
         jcbInvoiceTypes.setEnabled(editable);
         jpnlProductSelect.setVisible(editable);
         jpnlAddDetailed.setVisible(editable);
@@ -350,9 +355,11 @@ public class InvoiceDialog extends javax.swing.JDialog {
     private void setInvoiceDetailedEditing(boolean editingMode) {
         if (editingMode) {
             jbtnAdd.setText(NAME_EDIT);
+            jbtnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/az/store/images/edit.png"))); // NOI18N
         } else {
             jtxtCount.setText("");
             jbtnAdd.setText(NAME_ADD);
+            jbtnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/az/store/images/add.png"))); // NOI18N
             currentInvoiceDetailed = null;
         }
     }
@@ -866,6 +873,13 @@ public class InvoiceDialog extends javax.swing.JDialog {
 
         try {
             Inits.getDeleteQueries().deleteInvoiceDetailed(null, currentInvoice.getId());
+            if (!currentInvoice.isTemp()) {
+                for (int i = 0; i < tmTemporaryInvoices.getRowCount(); i++) {
+                    InvoiceDetailed invoiceDetailed = (InvoiceDetailed) tmTemporaryInvoices.getObjectAt(i);
+                    Inits.getUpdateQueries().increaseProductCount(invoiceDetailed.getProduct().getId(),
+                            -getSelectedInvoiceType().getSign() * invoiceDetailed.getCount());
+                }
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
             return;
@@ -901,9 +915,9 @@ public class InvoiceDialog extends javax.swing.JDialog {
         try {
             Inits.getDb().getConnection().setAutoCommit(false);
 
-            int sign = getSelectedInvoiceType().getSign();
-
             if (currentInvoice.isTemp()) {//update products count, prices
+                int sign = getSelectedInvoiceType().getSign();
+
                 for (Object obj : tmTemporaryInvoices.getRowObjects()) {
                     InvoiceDetailed invoiceDetailed = (InvoiceDetailed) obj;
 
@@ -915,11 +929,11 @@ public class InvoiceDialog extends javax.swing.JDialog {
                             if (-sign * invoiceDetailed.getCount() <= product.getCount()) {
                                 Inits.getUpdateQueries().increaseProductCount(product.getId(), sign * invoiceDetailed.getCount());
                             } else {
-                                JOptionPane.showMessageDialog(null, "Seçilmiş məhsul sayı istehsal olunmuş saydan çoxdur!");
+//                                JOptionPane.showMessageDialog(null, "Seçilmiş məhsul sayı istehsal olunmuş saydan çoxdur!");
                                 throw new Exception("Seçilmiş məhsul sayı istehsal olunmuş saydan çoxdur!");
                             }
                         } else {
-                            JOptionPane.showMessageDialog(null, "İstehsal olunmuş məhsullardan məhsulun məlumatları alına bilmədi!");
+//                            JOptionPane.showMessageDialog(null, "İstehsal olunmuş məhsullardan məhsulun məlumatları alına bilmədi!");
                             throw new Exception("İstehsal olunmuş məhsullardan məhsulun məlumatları alına bilmədi!");
                         }
                     }
@@ -1024,6 +1038,7 @@ public class InvoiceDialog extends javax.swing.JDialog {
         try {
             Inits.getDb().getConnection().setAutoCommit(false);
 
+            //Initiate Invoice: if null create, else update date, client, ...
             if (tmTemporaryInvoices.getRowCount() == 0) {
                 if (currentInvoice == null) {
                     currentInvoice = new Invoice();
@@ -1049,17 +1064,25 @@ public class InvoiceDialog extends javax.swing.JDialog {
 
             if (!isInvoiceDetailedEditing()) {//insert invoicedetailed
                 Inits.getInsertQueries().insertInvoiceDetailed(currentInvoice.getId(), invoiceDetailed);
+//                if(!currentInvoice.isTemp()){
+//                    Inits.getUpdateQueries().increaseProductCount(invoiceDetailed.getProduct().getId(),
+//                        sign * invoiceDetailed.getCount());
+//                }
             } else {//update invoicedetailed
                 invoiceDetailed.setId(currentInvoiceDetailed.getId());
                 Inits.getUpdateQueries().updateInvoiceDetailed(invoiceDetailed);
                 if (!currentInvoice.isTemp()) {
-                    Inits.getUpdateQueries().increaseProductCount(invoiceDetailed.getProduct().getId(),
-                            sign * (invoiceDetailed.getCount() - currentInvoiceDetailed.getCount()));
+                    invoiceDetailed.setCount(invoiceDetailed.getCount() - currentInvoiceDetailed.getCount());
                 }
             }
 
+            if (!currentInvoice.isTemp()) {
+                Inits.getUpdateQueries().increaseProductCount(invoiceDetailed.getProduct().getId(),
+                        sign * invoiceDetailed.getCount());
+            }
+
             Inits.getDb().getConnection().commit();
-            refreshInvoice(null);
+            refreshInvoice(currentInvoice.isTemp() ? null : currentInvoice);
         } catch (Exception ex) {
             Inits.getDb().rollback();
             JOptionPane.showMessageDialog(this, "Qaiməyə məhsulun əlavə olunması zamanı səhv baş verdi:\n" + ex.getMessage());

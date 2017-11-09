@@ -68,7 +68,9 @@ public final class InvoiceSearchPanel extends javax.swing.JPanel {
             return result;
         }
     };
+
     private InvoiceDialog productionSaleDialog = new InvoiceDialog(null, true);
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
